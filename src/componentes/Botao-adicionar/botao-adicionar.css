@@ -1,0 +1,17 @@
+.botao-adicionar {
+    height: 50px;
+    align-self: center;
+    text-align: center;
+    align-items: center;
+    width: 50px;
+    font-size: 10px;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.botao-adicionar:hover {
+    box-shadow: 1px 1px 5px rgba(222, 222, 222, 0.742);
+}
