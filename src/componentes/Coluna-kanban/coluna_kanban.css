@@ -1,5 +1,5 @@
 .coluna {
-    width: 300px;
+    width: 250px;
     height: 80vh;
     border: 1px solid rgb(236, 236, 236);
     border-radius: 10px;
@@ -17,6 +17,7 @@
     background-color: rgb(241, 241, 241);
     border-radius: 10px 10px 0 0;
     text-align: center;
+    height: 60px;
 }
 
 .titulo-coluna {
@@ -35,4 +36,27 @@
 
 .coluna:hover {
     box-shadow: 1px 1px 5px rgba(222, 222, 222, 0.742);
+}
+
+.icones-coluna {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.icones-coluna svg {
+    height: auto;
+    cursor: pointer;
+}
+
+
+.pop-up-icone button {
+    position: absolute;
+    border-radius: 8px;
+    background-color: white;
+    height: 30px;
+    font-size: 13px;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.377);
+    cursor: pointer;
 }

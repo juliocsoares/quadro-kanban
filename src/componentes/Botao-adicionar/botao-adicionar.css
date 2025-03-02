@@ -1,10 +1,10 @@
 .botao-adicionar {
-    height: 50px;
+    height: 30px;
     align-self: center;
     text-align: center;
     align-items: center;
-    width: 50px;
-    font-size: 10px;
+    width: 30px;
+    font-size: 20px;
     border-radius: 50%;
     background-color: rgb(255, 255, 255);
     border: none;

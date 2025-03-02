@@ -1,29 +1,38 @@
-
 .card {
-    border: 0.5px solid rgb(138, 138, 138);
-    margin: 20px;
+    margin: 10px;
     border-radius: 10px;
-    height: 150px;
+    height: 110px;
     text-align: start;
     transition: box-shadow 0.3s ease-in-out;
     overflow: hidden;
+    background-color: #fafafa;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.377);
+
 }
 
 .titulo-card {
     margin: 10px;
+    margin-top: -10px;
 
 }
 
 .card:hover {
-    box-shadow: 1px 1px 5px rgba(222, 222, 222, 0.742);
+    box-shadow: 1px 1px 5px rgba(86, 86, 86, 0.742);
     cursor: pointer;
 }
 
 .titulo-card h6 {
     color: #484848;
-    display: -webkit-box; /* Necessário para o line-clamp funcionar */
-    -webkit-box-orient: vertical; /* Define a orientação vertical */
-    -webkit-line-clamp: 3; /* Limita o texto a 3 linhas */
-    overflow: hidden; /* Esconde o conteúdo excedente */
-    text-overflow: ellipsis; /* Adiciona os três pontinhos */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    margin: 0;
+}
+
+.titulo-card h5 {
+    margin: 20px 0px 10px 0px;
 }
