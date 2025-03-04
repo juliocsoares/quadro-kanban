@@ -6,16 +6,24 @@ import "./quadro-kanban.css"
 
 export const Quadro_Kanban = () => {
 
-    const [coluna, setColuna] = useState([<COLUNA_KANBAN />])
+    const [colunas, setColunas] = useState([{ id: 0 }])
 
     function adicionarColuna() {
-        setColuna([...coluna, <COLUNA_KANBAN />])
+        setColunas([...colunas,{ id: Date.now()}])
     }
+
+    function removerColuna(id) {
+        setColunas(colunas.filter(coluna => coluna.id !== id));
+    }
+
 
     return (
         <div className="quadro-kanban">
-            {coluna}
-            <Botao_adicionar onClick={adicionarColuna}/>
+            {colunas.map(coluna => (
+                <COLUNA_KANBAN key={coluna.id} removerColuna={() => removerColuna(coluna.id)} />
+            ))}
+            <Botao_adicionar onClick={adicionarColuna} />
         </div>
-    )
+    );
+    
 }
