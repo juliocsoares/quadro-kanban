@@ -36,3 +36,44 @@
 .titulo-card h5 {
     margin: 20px 0px 10px 0px;
 }
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .popup {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    text-align: center;
+  }
+  
+  .popup h2 {
+    margin-bottom: 10px;
+  }
+  
+  .popup input,
+  .popup textarea {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0;
+  }
+  
+  .popup button {
+    background: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
