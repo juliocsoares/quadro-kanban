@@ -3,9 +3,9 @@ import "./card.css";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-export const Card = ({ titulo, descricao, dataCriacao, coluna }) => {
+export const Card = ({ tituloCard, descricao, dataCriacao, coluna, atualizarTituloCard }) => {
   const [popupAberto, setPopupAberto] = useState(false);
-  const [novoTitulo, setNovoTitulo] = useState(titulo);
+  const [novoTituloCard, setNovoTitulo] = useState(tituloCard);  
   const [novaDescricao, setNovaDescricao] = useState(descricao);
   const popupRef = useRef(null);
 
@@ -29,15 +29,16 @@ export const Card = ({ titulo, descricao, dataCriacao, coluna }) => {
   }, [popupAberto]);
 
   const salvarEdicao = () => {
-    console.log("Título salvo:", novoTitulo);
+    console.log("Título salvo:", novoTituloCard);
     console.log("Descrição salva:", novaDescricao);
+    atualizarTituloCard(novoTituloCard);  
     fecharPopup();
   };
 
   return (
     <>
       <div className="card" onClick={abrirPopup}>
-        <h5>{titulo}</h5>
+        <h5>{tituloCard}</h5> 
         <p dangerouslySetInnerHTML={{ __html: descricao }}></p>
       </div>
 
@@ -48,8 +49,8 @@ export const Card = ({ titulo, descricao, dataCriacao, coluna }) => {
             <label>Título:</label>
             <input
               type="text"
-              value={novoTitulo}
-              onChange={(e) => setNovoTitulo(e.target.value)}
+              value={novoTituloCard}
+              onChange={(e) => setNovoTitulo(e.target.value)} 
             />
 
             <label>Descrição:</label>
