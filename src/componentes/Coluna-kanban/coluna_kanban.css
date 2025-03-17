@@ -1,15 +1,18 @@
 .coluna {
-    width: 250px;
-    height: 80vh;
-    border: 1px solid rgb(236, 236, 236);
+    width: 250px; /* Largura fixa */
+    min-width: 250px; /* Garante que não encolha */
+    height: 80vh; /* Altura fixa */
+    border: 1px solid #ddd;
     border-radius: 10px;
     box-sizing: border-box;
+    background-color: #fff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     margin-top: 100px;
-    transition: box-shadow 0.3s ease-in-out;
-    background-color: rgb(255, 255, 255);
-}
-
-.header-coluna {
+  }
+  
+  .header-coluna {
     display: flex;
     justify-content: space-around;
     gap: 10px;
@@ -18,45 +21,38 @@
     border-radius: 10px 10px 0 0;
     text-align: center;
     height: 60px;
-}
-
-.titulo-coluna {
+  }
+  
+  .titulo-coluna {
     max-width: 80%;
     word-wrap: break-word;
     overflow-wrap: break-word;
     text-align: center;
     all: unset;
     font-size: 1rem;
-
-}
-
-.titulo-coluna:focus {
+  }
+  
+  .titulo-coluna:focus {
     border-bottom: 2px solid black;
-}
-
-.coluna:hover {
+  }
+  
+  .coluna:hover {
     box-shadow: 1px 1px 5px rgba(222, 222, 222, 0.742);
-}
-
-.icones-coluna {
+  }
+  
+  .icones-coluna {
     display: flex;
     flex-direction: row;
     gap: 10px;
-}
-
-.icones-coluna svg {
+  }
+  
+  .icones-coluna svg {
     height: auto;
     cursor: pointer;
-}
-
-
-.pop-up-icone button {
-    position: absolute;
-    border-radius: 8px;
-    background-color: white;
-    height: 30px;
-    font-size: 13px;
-    border: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.377);
-    cursor: pointer;
-}
+  }
+  
+  .lista-cards {
+    flex-grow: 1; /* Ocupa o espaço restante */
+    overflow-y: auto; /* Rolagem vertical */
+    padding: 8px;
+  }
