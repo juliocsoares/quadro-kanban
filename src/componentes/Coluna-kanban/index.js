@@ -1,11 +1,10 @@
 import { useState } from "react";
-import "./coluna_kanban.css";
+import { Droppable } from "react-beautiful-dnd";
 import { Card } from "../card";
 import { FiTrash, FiPlus } from "react-icons/fi";
+import "./coluna_kanban.css";
 
-export const COLUNA_KANBAN = ({ removerColuna }) => {
-  const [titulo, setTitulo] = useState("Nova Coluna");
-  const [cards, setCards] = useState([]);
+export const COLUNA_KANBAN = ({ coluna, removerColuna, setColunas }) => {
   const [popupAberto, setPopupAberto] = useState(false);
   const [novoTituloCard, setNovoTituloCard] = useState("");
   const [novaDescricao, setNovaDescricao] = useState("");
@@ -20,50 +19,72 @@ export const COLUNA_KANBAN = ({ removerColuna }) => {
   const adicionarCard = () => {
     if (novoTituloCard.trim() !== "") {
       const novoCard = {
-        id: Date.now(),
+        id: `card-${Date.now()}`,
         titulo: novoTituloCard,
         descricao: novaDescricao,
+        dataCriacao: Date.now(),
+        coluna: coluna.titulo,
       };
-      setCards([...cards, novoCard]);
+
+      const novaColuna = {
+        ...coluna,
+        cards: [...coluna.cards, novoCard],
+      };
+
+      setColunas((prevColunas) => ({
+        ...prevColunas,
+        [coluna.id]: novaColuna,
+      }));
+
       fecharPopup();
     }
   };
 
   const atualizarCard = (id, novoTitulo, novaDescricao) => {
-    setCards(
-      cards.map((card) =>
-        card.id === id ? { ...card, titulo: novoTitulo, descricao: novaDescricao } : card
-      )
+    const novosCards = coluna.cards.map((card) =>
+      card.id === id ? { ...card, titulo: novoTitulo, descricao: novaDescricao } : card
     );
+
+    const novaColuna = {
+      ...coluna,
+      cards: novosCards,
+    };
+
+    setColunas((prevColunas) => ({
+      ...prevColunas,
+      [coluna.id]: novaColuna,
+    }));
   };
 
   return (
     <div className="coluna">
       <header className="header-coluna">
-        <input
-          className="titulo-coluna"
-          value={titulo}
-          onChange={(e) => setTitulo(e.target.value)}
-        />
+        <h3>{coluna.titulo}</h3>
         <div className="icones-coluna">
           <FiPlus onClick={abrirPopup} />
           <FiTrash onClick={removerColuna} />
         </div>
       </header>
 
-      <div className="lista-cards">
-        {cards.map((card) => (
-          <Card
-            key={card.id}
-            id={card.id}
-            tituloCard={card.titulo}
-            descricao={card.descricao}
-            dataCriacao={Date.now()}
-            coluna={titulo}
-            atualizarCard={atualizarCard} // Passando a função correta
-          />
-        ))}
-      </div>
+      <Droppable droppableId={coluna.id}>
+        {(provided) => (
+          <div
+            className="lista-cards"
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            {coluna.cards.map((card, index) => (
+              <Card
+                key={card.id}
+                card={card}
+                index={index}
+                atualizarCard={atualizarCard} // Passando a função atualizarCard
+              />
+            ))}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
 
       {popupAberto && (
         <div className="overlay">

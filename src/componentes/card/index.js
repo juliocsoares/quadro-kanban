@@ -1,12 +1,13 @@
-import { useState, useRef, useEffect } from "react";
-import "./card.css";
+import { Draggable } from "react-beautiful-dnd";
+import { useState, useRef, useEffect } from "react"; // Adicionei useState, useRef e useEffect
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import "./card.css";
 
-export const Card = ({ id, tituloCard, descricao, dataCriacao, coluna, atualizarCard }) => {
+export const Card = ({ card, index, atualizarCard }) => { // Adicionei a prop atualizarCard
   const [popupAberto, setPopupAberto] = useState(false);
-  const [novoTituloCard, setNovoTitulo] = useState(tituloCard);
-  const [novaDescricao, setNovaDescricao] = useState(descricao);
+  const [novoTituloCard, setNovoTitulo] = useState(card.titulo);
+  const [novaDescricao, setNovaDescricao] = useState(card.descricao);
   const popupRef = useRef(null);
 
   const abrirPopup = () => setPopupAberto(true);
@@ -31,16 +32,26 @@ export const Card = ({ id, tituloCard, descricao, dataCriacao, coluna, atualizar
   const salvarEdicao = () => {
     console.log("Título salvo:", novoTituloCard);
     console.log("Descrição salva:", novaDescricao);
-    atualizarCard(id, novoTituloCard, novaDescricao);
+    atualizarCard(card.id, novoTituloCard, novaDescricao); // Atualiza o card
     fecharPopup();
   };
 
   return (
     <>
-      <div className="card" onClick={abrirPopup}>
-        <h5>{tituloCard}</h5>
-        <p dangerouslySetInnerHTML={{ __html: descricao }}></p>
-      </div>
+      <Draggable draggableId={card.id} index={index}>
+        {(provided) => (
+          <div
+            className="card"
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            onClick={abrirPopup} // Abre o popup ao clicar no card
+          >
+            <h5>{card.titulo}</h5>
+            <p dangerouslySetInnerHTML={{ __html: card.descricao }}></p>
+          </div>
+        )}
+      </Draggable>
 
       {popupAberto && (
         <div className="overlay">
@@ -57,9 +68,9 @@ export const Card = ({ id, tituloCard, descricao, dataCriacao, coluna, atualizar
             <ReactQuill value={novaDescricao} onChange={setNovaDescricao} />
 
             <label>Data de Criação:</label>
-            <p>{new Date(dataCriacao).toLocaleString()}</p>
+            <p>{new Date(card.dataCriacao).toLocaleString()}</p>
 
-            <label>Coluna: {coluna}</label>
+            <label>Coluna: {card.coluna}</label>
             <br />
             <br />
             <div className="botoes">

@@ -3,4 +3,6 @@
     flex-direction: row;
     gap: 20px;
     flex-wrap: nowrap;
-}
+    overflow-x: auto;
+    padding: 16px;
+  }
