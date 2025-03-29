@@ -4,14 +4,14 @@
   height: auto; /* Altura automática */
   text-align: start;
   transition: box-shadow 0.3s ease-in-out;
-  background-color: #fafafa;
+  background-color: #fafafa55;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.377);
   padding: 8px;
 }
 
 .card:hover {
-  box-shadow: 1px 1px 5px rgba(86, 86, 86, 0.742);
+  box-shadow: 1px 1px 5px rgba(132, 132, 132, 0.916);
   cursor: pointer;
 }
 
@@ -49,30 +49,61 @@
   }
   
   .popup {
-    background: white;
-    padding: 20px;
+    background: rgb(255, 255, 255);
+    padding: 50px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    width: 300px;
+    width: 500px;
     text-align: center;
   }
-  
-  .popup h2 {
-    margin-bottom: 10px;
+
+
+  label {
+    display: block; 
+    margin-bottom: 20px; /* Ajuste o valor conforme necessário */
+    font-weight: bold;
   }
+  
   
   .popup input,
   .popup textarea {
     width: 100%;
-    padding: 5px;
-    margin: 5px 0;
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 10px;
+    border: solid 0.5px rgba(0, 0, 0, 0.151);
   }
   
   .popup button {
-    background: red;
     color: white;
-    padding: 5px 10px;
+    padding: 20px 20px;
     border: none;
     cursor: pointer;
+    border-radius: 10px;
+  }
+
+  .botoes {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+  }
+
+  .salvar {
+    background: rgb(48, 68, 48);
+  }
+  .fechar {
+    background: rgb(174, 174, 174);
+  }
+
+  .ql-editor {
+    font-size: 16px;
+    min-height: 150px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
   }
   
+  .ql-toolbar {
+    background-color: #d6d6d6;
+    border-radius: 5px 5px 0 0;
+  }

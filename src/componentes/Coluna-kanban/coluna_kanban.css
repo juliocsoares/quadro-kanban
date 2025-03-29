@@ -2,7 +2,7 @@
     width: 250px; /* Largura fixa */
     min-width: 250px; /* Garante que não encolha */
     height: 80vh; /* Altura fixa */
-    border: 1px solid #ddd;
+    border: 0.1px solid #dddddd36;
     border-radius: 10px;
     box-sizing: border-box;
     background-color: #fff;
@@ -17,7 +17,6 @@
     justify-content: space-around;
     gap: 10px;
     box-sizing: border-box;
-    background-color: rgb(241, 241, 241);
     border-radius: 10px 10px 0 0;
     text-align: center;
     height: 60px;

@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Droppable } from "react-beautiful-dnd";
 import { Card } from "../card";
-import { FiTrash, FiPlus } from "react-icons/fi";
+import { FiTrash, FiPlus, FiEdit } from "react-icons/fi";
 import "./coluna_kanban.css";
 
 export const COLUNA_KANBAN = ({ coluna, removerColuna, setColunas }) => {
   const [popupAberto, setPopupAberto] = useState(false);
   const [novoTituloCard, setNovoTituloCard] = useState("");
   const [novaDescricao, setNovaDescricao] = useState("");
+  const [editandoTitulo, setEditandoTitulo] = useState(false);
+  const [novoTituloColuna, setNovoTituloColuna] = useState(coluna.titulo);
 
   const abrirPopup = () => setPopupAberto(true);
   const fecharPopup = () => {
@@ -56,10 +58,34 @@ export const COLUNA_KANBAN = ({ coluna, removerColuna, setColunas }) => {
     }));
   };
 
+  const salvarTituloColuna = () => {
+    const novaColuna = {
+      ...coluna,
+      titulo: novoTituloColuna,
+    };
+
+    setColunas((prevColunas) => ({
+      ...prevColunas,
+      [coluna.id]: novaColuna,
+    }));
+
+    setEditandoTitulo(false);
+  };
+
   return (
     <div className="coluna">
       <header className="header-coluna">
-        <h3>{coluna.titulo}</h3>
+        {editandoTitulo ? (
+          <input
+            type="text"
+            value={novoTituloColuna}
+            onChange={(e) => setNovoTituloColuna(e.target.value)}
+            onBlur={salvarTituloColuna}
+            autoFocus
+          />
+        ) : (
+          <h3 onClick={() => setEditandoTitulo(true)}>{coluna.titulo}</h3>
+        )}
         <div className="icones-coluna">
           <FiPlus onClick={abrirPopup} />
           <FiTrash onClick={removerColuna} />
@@ -78,7 +104,7 @@ export const COLUNA_KANBAN = ({ coluna, removerColuna, setColunas }) => {
                 key={card.id}
                 card={card}
                 index={index}
-                atualizarCard={atualizarCard} // Passando a função atualizarCard
+                atualizarCard={atualizarCard}
               />
             ))}
             {provided.placeholder}

@@ -1,10 +1,10 @@
 import { Draggable } from "react-beautiful-dnd";
-import { useState, useRef, useEffect } from "react"; // Adicionei useState, useRef e useEffect
+import { useState, useRef, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./card.css";
 
-export const Card = ({ card, index, atualizarCard }) => { // Adicionei a prop atualizarCard
+export const Card = ({ card, index, atualizarCard }) => {
   const [popupAberto, setPopupAberto] = useState(false);
   const [novoTituloCard, setNovoTitulo] = useState(card.titulo);
   const [novaDescricao, setNovaDescricao] = useState(card.descricao);
@@ -32,7 +32,7 @@ export const Card = ({ card, index, atualizarCard }) => { // Adicionei a prop at
   const salvarEdicao = () => {
     console.log("Título salvo:", novoTituloCard);
     console.log("Descrição salva:", novaDescricao);
-    atualizarCard(card.id, novoTituloCard, novaDescricao); // Atualiza o card
+    atualizarCard(card.id, novoTituloCard, novaDescricao);
     fecharPopup();
   };
 
@@ -45,7 +45,7 @@ export const Card = ({ card, index, atualizarCard }) => { // Adicionei a prop at
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
-            onClick={abrirPopup} // Abre o popup ao clicar no card
+            onClick={abrirPopup}
           >
             <h5>{card.titulo}</h5>
             <p dangerouslySetInnerHTML={{ __html: card.descricao }}></p>
@@ -57,25 +57,25 @@ export const Card = ({ card, index, atualizarCard }) => { // Adicionei a prop at
         <div className="overlay">
           <div className="popup" ref={popupRef}>
             <h2>Editar Card</h2>
-            <label>Título:</label>
+            <label>Título</label>
             <input
               type="text"
               value={novoTituloCard}
               onChange={(e) => setNovoTitulo(e.target.value)}
             />
+            <label>Descrição</label>
 
-            <label>Descrição:</label>
-            <ReactQuill value={novaDescricao} onChange={setNovaDescricao} />
+            <ReactQuill className="reactquill" value={novaDescricao} onChange={setNovaDescricao} />
 
-            <label>Data de Criação:</label>
+            <label>Data de Criação</label>
             <p>{new Date(card.dataCriacao).toLocaleString()}</p>
 
             <label>Coluna: {card.coluna}</label>
             <br />
             <br />
             <div className="botoes">
-              <button className="salvar" onClick={salvarEdicao}>Salvar</button>
-              <button className="fechar" onClick={fecharPopup}>Fechar</button>
+              <button id="botao-salvar" className="salvar" onClick={salvarEdicao}>Salvar</button>
+              <button id="botao-fechar" className="fechar" onClick={fecharPopup}>Fechar</button>
             </div>
           </div>
         </div>

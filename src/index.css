@@ -2,7 +2,7 @@ body {
   margin: 10px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(1, 51, 87);
+  background-color: rgb(255, 255, 255);
 }
 
 code {
