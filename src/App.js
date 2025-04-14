@@ -1,15 +1,17 @@
-import { COLUNA_KANBAN } from './componentes/Coluna-kanban';
-import { Header } from './componentes/Header';
-import { Quadro_Kanban } from './componentes/Quadro-kanban';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Header } from "./componentes/Header";
+import Pagina_quadro from "./paginas/pagina-quadro";
+import Pagina_Inicial from "./paginas/pagina-inicio/pagina-inicio";
 
 function App() {
   return (
-
-
-    <>
-      <Header />
-      <Quadro_Kanban />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Header />} />
+        <Route path="/inicio" element={<Pagina_Inicial />} />
+        <Route path="/quadro" element={<Pagina_quadro />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
