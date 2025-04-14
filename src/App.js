@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Header } from "./componentes/Header";
 import Pagina_quadro from "./paginas/pagina-quadro";
 import Pagina_Inicial from "./paginas/pagina-inicio/pagina-inicio";
 

@@ -67,7 +67,7 @@ export const Card = ({ card, index, atualizarCard }) => {
 
             <ReactQuill className="reactquill" value={novaDescricao} onChange={setNovaDescricao} />
 
-            <label>Data de Criação</label>
+            <label id="data-de-criacao">Data de Criação</label>
             <p>{new Date(card.dataCriacao).toLocaleString()}</p>
 
             <label>Coluna: {card.coluna}</label>

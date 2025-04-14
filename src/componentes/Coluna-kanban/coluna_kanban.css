@@ -1,7 +1,7 @@
 .coluna {
-    width: 250px; /* Largura fixa */
-    min-width: 250px; /* Garante que não encolha */
-    height: 80vh; /* Altura fixa */
+    width: 250px; 
+    min-width: 250px; 
+    height: 80vh; 
     border: 0.1px solid #dddddd36;
     border-radius: 10px;
     box-sizing: border-box;

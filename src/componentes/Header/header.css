@@ -1,4 +1,3 @@
-/* Estilos gerais do header */
 .header {
     display: flex;
     justify-content: space-between;
@@ -13,15 +12,12 @@
     box-sizing: border-box;
 }
 
-/* Efeito ao passar o mouse */
 
-/* Logo */
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
 }
 
-/* Estilos da navegação */
 .nav-list {
     list-style: none;
     display: flex;
@@ -30,7 +26,6 @@
     padding: 0;
 }
 
-/* Estilos dos links */
 .nav-list li a {
     text-decoration: none;
     color: white;
@@ -39,7 +34,6 @@
     transition: color 0.3s ease;
 }
 
-/* Efeito hover nos links */
 .nav-list li a:hover {
     color: #5a4800;
 }
