@@ -7,8 +7,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Header />} />
-        <Route path="/inicio" element={<Pagina_Inicial />} />
+        <Route path="/" element={<Pagina_Inicial />} />
         <Route path="/quadro" element={<Pagina_quadro />} />
       </Routes>
     </BrowserRouter>

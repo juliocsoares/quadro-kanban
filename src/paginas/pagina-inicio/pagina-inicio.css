@@ -14,16 +14,47 @@
   }
   
   .botao {
-    padding: 12px 24px;
-    font-size: 1rem;
-    background-color: #007bff;
-    color: #fff;
+    padding: 20px 50px;
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, #303030, #4b4900);
+    color: #ffffff;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
+    box-shadow: 0 0 20px #4d4d4d80;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: pulsar 2s infinite ease-in-out;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .botao::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 80%);
+    animation: brilhoGirando 5s linear infinite;
+    z-index: 0;
   }
   
   .botao:hover {
-    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 0 30px #ffe60080;
   }
+  
+  .botao span {
+    position: relative;
+    z-index: 1;
+  }
+  
+  @keyframes pulsar {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+  }
+  
+
   
