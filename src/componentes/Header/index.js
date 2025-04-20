@@ -11,7 +11,7 @@ export const Header = () => {
 
     return (
         <header className="header">
-        <h1 className="logo">Projeto Kanban IGC</h1>
+        <h1 className="logo" onClick={inicio}>Projeto Kanban IGC</h1>
         <nav>
           <ul className="nav-list">
             <li onClick={inicio}><a href="#">Início</a></li>
